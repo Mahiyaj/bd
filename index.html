@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>පර්යේෂණ ප්‍රශ්නාවලිය | Research Questionnaire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary:   #1a4a8a;
+      --accent:    #2563eb;
+      --light-bg:  #f0f4fb;
+      --white:     #ffffff;
+      --border:    #d1daea;
+      --text:      #1e2d45;
+      --muted:     #6b7e99;
+      --green:     #16a34a;
+      --card-sh:   0 4px 24px rgba(26,74,138,0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      background: var(--light-bg);
+      font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOP HEADER BAR ── */
+    .top-bar {
+      background: var(--primary);
+      color: white;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+    }
+    .top-bar-logo {
+      width: 36px; height: 36px;
+      background: white;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .top-bar-logo svg { width: 22px; height: 22px; }
+    .top-bar-title { font-weight: 600; font-size: 14px; line-height: 1.3; }
+    .top-bar-sub { opacity: 0.75; font-size: 11px; }
+
+    /* ── MAIN WRAPPER ── */
+    .wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 36px 16px 60px;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      width: 100%; max-width: 720px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      display: flex; align-items: center; gap: 6px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb span { opacity: 0.5; }
+
+    /* ── MAIN CARD ── */
+    .card {
+      width: 100%; max-width: 720px;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--card-sh);
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: linear-gradient(135deg, var(--primary) 0%, #1e5db8 100%);
+      padding: 30px 32px 24px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .ref-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+    .ref-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+
+    .card-header h1 {
+      font-family: 'Noto Sans Sinhala', sans-serif;
+      font-size: clamp(18px, 4vw, 24px);
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .card-header p {
+      font-size: 13px;
+      opacity: 0.80;
+      line-height: 1.7;
+      font-family: 'Noto Sans Sinhala', sans-serif;
+    }
+
+    /* ── CARD BODY ── */
+    .card-body { padding: 28px 32px 32px; }
+
+    /* Info rows */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 480px) {
+      .info-grid { grid-template-columns: 1fr; }
+    }
+
+    .info-item {
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+    }
+    .info-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .info-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      font-family: 'Noto Sans Sinhala', sans-serif;
+    }
+
+    /* Divider */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+
+    /* Description block */
+    .desc-title {
+      font-family: 'Noto Sans Sinhala', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .desc-text {
+      font-family: 'Noto Sans Sinhala', sans-serif;
+      font-size: 14px;
+      line-height: 2;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    /* Instructions list */
+    .instructions {
+      background: #eff6ff;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .instructions-title {
+      font-family: 'Noto Sans Sinhala', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .instructions ol {
+      padding-left: 18px;
+    }
+    .instructions li {
+      font-family: 'Noto Sans Sinhala', sans-serif;
+      font-size: 13px;
+      line-height: 2;
+      color: var(--text);
+    }
+
+    /* Privacy notice */
+    .privacy-note {
+      display: flex; gap: 10px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 28px;
+    }
+    .privacy-note svg { flex-shrink: 0; margin-top: 1px; }
+    .privacy-note p {
+      font-family: 'Noto Sans Sinhala', sans-serif;
+      font-size: 12px;
+      line-height: 1.8;
+      color: #15803d;
+    }
+
+    /* CTA Button */
+    .btn-start {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, var(--accent) 0%, #1d4ed8 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Noto Sans Sinhala', 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+      box-shadow: 0 4px 16px rgba(37,99,235,0.35);
+      letter-spacing: 0.3px;
+    }
+    .btn-start:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,99,235,0.40);
+    }
+    .btn-start:active { transform: translateY(0); }
+    .btn-start svg { flex-shrink: 0; }
+
+    .btn-note {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 10px;
+      font-family: 'Noto Sans Sinhala', sans-serif;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #e8eef7;
+      border-top: 1px solid #d1daea;
+      padding: 16px 24px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── MOBILE TWEAKS ── */
+    @media (max-width: 540px) {
+      .card-header { padding: 22px 20px 18px; }
+      .card-body   { padding: 20px 20px 24px; }
+      .top-bar     { padding: 10px 16px; }
+      .top-bar-title { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a8a" stroke-width="2" stroke-linecap="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        <path d="M2 17l10 5 10-5"/>
+        <path d="M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="top-bar-title">ශ්‍රී ලංකා සමාජ පර්යේෂණ ආයතනය</div>
+      <div class="top-bar-sub">Social Research Institute of Sri Lanka</div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="wrapper">
+
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <a href="#">මුල් පිටුව</a>
+      <span>›</span>
+      <a href="#">පර්යේෂණ</a>
+      <span>›</span>
+      <span style="color:var(--text)">ප්‍රශ්නාවලිය 2026</span>
+    </nav>
+
+    <!-- CARD -->
+    <div class="card" role="main">
+
+      <!-- Header -->
+      <div class="card-header">
+        <div class="ref-badge">
+          <span class="ref-dot"></span>
+          සක්‍රීය · Active
+        </div>
+        <h1>සමාජ සම්බන්ධතා හා කාර්යක්ෂමතාව පිළිබඳ<br>ජාතික පර්යේෂණ ප්‍රශ්නාවලිය</h1>
+        <p>National Research Questionnaire on Social Relationships &amp; Well-being · 2026</p>
+      </div>
+
+      <!-- Body -->
+      <div class="card-body">
+
+        <!-- Info grid -->
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">ව්‍යාපෘති කේතය</div>
+            <div class="info-value">SRISL-2026-SRW-04</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">ක්‍රම</div>
+            <div class="info-value">ස්ව-පිරවීම</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">ගත වන කාලය</div>
+            <div class="info-value">~ මිනිත්තු 5–8</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">භාෂාව</div>
+            <div class="info-value">සිංහල</div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Description -->
+        <p class="desc-title">📋 ප්‍රශ්නාවලිය පිළිබඳ විස්තරය</p>
+        <p class="desc-text">
+          මෙම ප්‍රශ්නාවලිය ශ්‍රී ලාංකික පුද්ගලයන්ගේ සමාජ සම්බන්ධතා, ස්ව-සෞඛ්‍යය
+          සහ ජීවන තත්ත්වය පිළිබඳ දත්ත රැස් කිරීම සඳහා සකස් කර ඇත. ලබා ගන්නා
+          ප්‍රතිඵල ශ්‍රී ලංකාවේ සමාජ ප්‍රතිපත්ති සකස් කිරීමට ප්‍රමාණවත් දායකත්වයක්
+          ලබා දෙනු ඇත.
+        </p>
+
+        <!-- Instructions -->
+        <div class="instructions">
+          <div class="instructions-title">📌 ප්‍රශ්නාවලිය පිරවීමේ උපදෙස්</div>
+          <ol>
+            <li>ප්‍රශ්න සියල්ල හොඳින් කියවා, ඔබේ සත්‍ය අදහස ලබා දෙන්න.</li>
+            <li>ප්‍රශ්නාවලිය මධ්‍යයේ නතර කළ නොහැක. එකවර සම්පූර්ණ කරන්න.</li>
+            <li>ඔබගේ දත්ත රහස්‍යව තබා ගනු ලැබේ.</li>
+            <li>කිසිදු ප්‍රශ්නයකට "නිවැරදි" හෝ "වැරදි" පිළිතුරක් නොමැත.</li>
+          </ol>
+        </div>
+
+        <!-- Privacy -->
+        <div class="privacy-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <p>
+            ඔබගේ සියලු දත්ත රහස්‍ය ලෙස සංරක්ෂිත වේ. නාමය හෝ ව්‍යක්තිකරණය
+            කළ හැකි කිසිදු තොරතුරක් පළ නොකෙරේ. දත්ත පර්යේෂණ කටයුතු සඳහා
+            පමණක් භාවිතා කෙරේ.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <a href="birthday_sister.html" class="btn-start" id="start-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+          ප්‍රශ්නාවලිය ආරම්භ කරන්න
+        </a>
+        <p class="btn-note">* ඔබ මේ button එක click කිරීමෙන් ප්‍රශ්නාවලිය ආරම්භ වේ</p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 ශ්‍රී ලංකා සමාජ පර්යේෂණ ආයතනය · <a href="#">රහස්‍යතා ප්‍රතිපත්තිය</a> · <a href="#">සම්බන්ධ වන්න</a></p>
+    <p style="margin-top:4px; font-size:10px; opacity:0.7;">SRISL-2026 | Powered by Research Management System v3.2</p>
+  </footer>
+
+</body>
+</html>
